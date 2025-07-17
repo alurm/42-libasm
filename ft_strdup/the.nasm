@@ -3,38 +3,8 @@ section .text
 global ft_strdup
 
 extern malloc
-
-ft_strlen:
-        mov rax, 0
-
-.loop:
-        mov r9b, byte [rdi + rax]
-
-        cmp r9b, 0
-        je .end
-
-        inc rax
-        jmp .loop
-
-.end:
-        ret
-
-ft_strcpy:
-        mov r8, 0
-
-.loop:
-        mov r9b, byte [rsi + r8]
-        mov byte [rdi + r8], r9b
-
-        cmp r9b, 0
-        je .end
-
-        inc r8
-        jmp .loop
-
-.end:
-        mov rax, rdi
-        ret
+extern ft_strlen
+extern ft_strcpy
 
 %assign the_offset 0
 

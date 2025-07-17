@@ -1,20 +1,22 @@
 .DEFAULT_GOAL := all
-
-include common.mk
-
 NAME := libasm.a
 
-libasm.a: $(addprefix ft_, $(addsuffix /the.o, \
+%.o: %.nasm
+	nasm -f elf64 $<
+
+functions := $(addprefix ft_, \
 	strlen \
 	strcpy \
 	strcmp \
 	write \
 	read \
 	strdup \
-))
+)
+
+libasm.a: $(addsuffix /the.o, $(functions))
 	ar r $@ $^
 
-.PHONY: all fclean re
+.PHONY: all fclean re test
 
 all: $(NAME)
 
@@ -24,3 +26,10 @@ fclean: clean
 re:
 	$(MAKE) fclean
 	$(MAKE)
+
+.PHONY: test
+test:
+	for function in $(functions); do \
+		(cd $$function; make) || exit 1; \
+	done \
+	;

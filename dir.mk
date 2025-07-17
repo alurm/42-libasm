@@ -1,8 +1,11 @@
 .DEFAULT_GOAL := test
 
-include ../common.mk
+FORCE:
 
-a.out: tests.c the.o
+../libasm.a: FORCE
+	cd .. && $(MAKE) libasm.a
+
+a.out: tests.c ../libasm.a
 	cc -g -O0 $^
 
 .PHONY: test
