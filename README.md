@@ -7,14 +7,14 @@
 - `strdup`
 - `strlen`
 
-# Some useful links
+# Some useful docs
 
 - [The subject for this task at the moment of writing](en.subject.pdf)
 - [x86_64 system V ABI](x86_64-abi-0.99.pdf)
-- Documentation for x86 instructions: <https://www.felixcloutier.com/x86/enter>
-- The NASM documentation: <https://www.nasm.us/doc/nasmdoc0.html>
-- The table with system call arguments: <https://man7.org/linux/man-pages/man2/syscall.2.html#:~:text=to%20pass%20the%20system%20call%20arguments>
-- System call numbers: <https://chromium.googlesource.com/chromiumos/docs/+/master/constants/syscalls.md>
+- [Documentation](https://www.felixcloutier.com/x86/enter) for x86 instructions
+- The NASM [documentation](https://www.nasm.us/doc/nasmdoc0.html)
+- The [table](https://man7.org/linux/man-pages/man2/syscall.2.html#:~:text=to%20pass%20the%20system%20call%20arguments) with system call arguments
+- System call [numbers](https://chromium.googlesource.com/chromiumos/docs/+/master/constants/syscalls.md)
 
 # Testing
 
