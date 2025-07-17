@@ -1,5 +1,10 @@
+.DEFAULT_GOAL := test
+
+include ../common.mk
+
+a.out: tests.c the.o
+	cc -g -O0 $^
+
 .PHONY: test
-test:
-	nasm -f elf64 the.nasm
-	cc the.o tests.c
+test: a.out
 	./a.out
