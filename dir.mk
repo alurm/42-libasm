@@ -5,8 +5,8 @@ FORCE:
 ../libasm.a: FORCE
 	cd .. && $(MAKE) libasm.a
 
-a.out: tests.c ../libasm.a
-	cc -g -O0 $^
+a.out: tests.c reference.c ../libasm.a
+	cc -g -O0 tests.c ../libasm.a
 
 .PHONY: test
 test: a.out

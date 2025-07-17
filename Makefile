@@ -16,12 +16,15 @@ functions := $(addprefix ft_, \
 libasm.a: $(addsuffix /the.o, $(functions))
 	ar r $@ $^
 
-.PHONY: all fclean re test
+.PHONY: all clean fclean re test
 
 all: $(NAME)
 
+clean:
+	rm -f result */result a.out */a.out *.o */*.o
+
 fclean: clean
-	rm libasm.a
+	rm -f libasm.a
 
 re:
 	$(MAKE) fclean

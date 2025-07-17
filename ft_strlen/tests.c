@@ -4,12 +4,11 @@
 
 struct test {
   char *input;
-  size_t output;
 } tests[] = {
-  { "", 0 },
-  { "Hello!", 6 },
-  { "\0Garbage", 0 },
-  { "\n", 1 },
+  { "", },
+  { "Hello!", },
+  { "\0Garbage" },
+  { "\n" },
 };
 
 int main() {
