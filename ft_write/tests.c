@@ -1,6 +1,13 @@
 #include "reference.c"
 #include <stdio.h>
 #include <errno.h>
+#include <assert.h>
+#include <unistd.h>
+#include <signal.h>
+
+enum {
+  pipe_test
+};
 
 struct test {
   int fd;
@@ -9,6 +16,7 @@ struct test {
   ssize_t result;
   int the_errno;
 } tests[] = {
+  [pipe_test] = { -1, "Hello", 5, -1, EPIPE },
   { 1, "Hello\n", 6, 6 },
   { 1, "", 0, 0 },
   { 128, "", 0, -1, EBADF },
@@ -16,6 +24,12 @@ struct test {
 };
 
 int main() {
+  int the_pipe[2];
+  assert(pipe(the_pipe) != -1);
+  assert(close(the_pipe[0]) != -1);
+  assert(signal(SIGPIPE, SIG_IGN) != SIG_ERR);
+  tests[pipe_test].fd = the_pipe[1];
+
   for (size_t i = 0; i < sizeof(tests) / sizeof(*tests); i++) {
     struct test t = tests[i];
     printf("# A write.\n");
