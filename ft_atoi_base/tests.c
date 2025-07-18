@@ -23,7 +23,7 @@ char *atoi_tests[] = {
    "-23498723493274",
 };
 
-#define size(x) sizeof((x)) / sizeof(*(x))
+#define size(x) (sizeof((x)) / sizeof(*(x)))
 
 function_t *functions[] = {
   reference,
