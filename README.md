@@ -6,6 +6,7 @@
 - `strcpy`
 - `strdup`
 - `strlen`
+- `atoi_base` (an `atoi` which takes a base in range from 2 to 16)
 
 # Some useful docs
 
@@ -15,6 +16,7 @@
 - The NASM [documentation](https://www.nasm.us/doc/nasmdoc0.html)
 - The [table](https://man7.org/linux/man-pages/man2/syscall.2.html#:~:text=to%20pass%20the%20system%20call%20arguments) with system call arguments
 - System call [numbers](https://chromium.googlesource.com/chromiumos/docs/+/master/constants/syscalls.md)
+- [Two's complement (Wikipedia)](https://en.wikipedia.org/wiki/Two%27s_complement)
 
 # Testing
 

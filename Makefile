@@ -11,6 +11,7 @@ functions := $(addprefix ft_, \
 	write \
 	read \
 	strdup \
+	atoi_base \
 )
 
 libasm.a: $(addsuffix /the.o, $(functions))
