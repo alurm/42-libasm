@@ -3,7 +3,7 @@
 FORCE:
 
 ../libasm.a: FORCE
-	cd .. && $(MAKE) libasm.a
+	cd .. && $(MAKE) all
 
 a.out: tests.c reference.c ../libasm.a
 	cc -g -O0 tests.c ../libasm.a

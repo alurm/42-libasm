@@ -1,1 +1,1 @@
-../dir.mk
+../bonus.mk

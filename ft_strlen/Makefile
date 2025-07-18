@@ -1,1 +1,1 @@
-../dir.mk
+../mandatory.mk

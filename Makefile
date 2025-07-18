@@ -4,28 +4,38 @@ NAME := libasm.a
 %.o: %.nasm
 	nasm -f elf64 $<
 
-functions := $(addprefix ft_, \
+mandatory := $(addprefix ft_, \
 	strlen \
 	strcpy \
 	strcmp \
 	write \
 	read \
 	strdup \
+)
+
+bonuses := $(addprefix ft_, \
 	atoi_base \
 )
 
-libasm.a: $(addsuffix /the.o, $(functions))
+mandatory.a: $(addsuffix /the.o, $(mandatory))
 	ar r $@ $^
 
-.PHONY: all clean fclean re test
+bonus.a: $(addsuffix /the.o, $(mandatory) $(bonuses))
+	ar r $@ $^
 
-all: $(NAME)
+.PHONY: all clean fclean re test bonus libasm.a
+
+$(NAME) all: mandatory.a
+	ln -fs $^ $(NAME)
+
+bonus: bonus.a
+	ln -fs $^ $(NAME)
 
 clean:
 	rm -f result */result a.out */a.out *.o */*.o
 
 fclean: clean
-	rm -f libasm.a
+	rm -f *.a
 
 re:
 	$(MAKE) fclean
@@ -33,7 +43,7 @@ re:
 
 .PHONY: test
 test:
-	for function in $(functions); do \
-		(cd $$function; make) || exit 1; \
+	for function in $(mandatory) $(bonuses); do \
+		(cd $$function; $(MAKE)) || exit 1; \
 	done \
 	;
