@@ -13,9 +13,10 @@ mandatory := $(addprefix ft_, \
 	strdup \
 )
 
-bonuses := $(addprefix ft_, \
+bonuses := $(addsuffix _bonus, $(addprefix ft_, \
 	atoi_base \
-)
+	lists \
+))
 
 mandatory.a: $(addsuffix /the.o, $(mandatory))
 	ar r $@ $^
