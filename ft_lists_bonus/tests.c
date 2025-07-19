@@ -7,12 +7,14 @@
 
 int main() {
   for (size_t fn = 0; fn < 2; fn++) {
-    __auto_type get_list_size = fn ? ft_list_size_c : ft_list_size_c;
+    __auto_type get_list_size = fn ? ft_list_size : ft_list_size_c;
     __auto_type list_push_front = fn ? ft_list_push_front : ft_list_push_front_c;
 
     printf("Testing out the %s version.\n", fn ? "NASM" : "C");
 
     list_t *head = 0;
+
+    assert(get_list_size(head) == 0);
 
     size_t data[] = {
       1,
