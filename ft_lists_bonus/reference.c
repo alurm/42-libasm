@@ -30,3 +30,7 @@ int ft_list_size_c(list_t *list) {
   );
   return size;
 }
+
+typedef void ft_list_sort_t(list_t **list, int (*cmp)(void *a, void *b));
+
+ft_list_sort_t ft_list_sort, ft_list_sort_c;
