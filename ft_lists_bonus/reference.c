@@ -1,10 +1,17 @@
 #include "../list.h"
+#include <stdlib.h>
 
-typedef void ft_list_push_front_t(list_t **list, list_t *new);
+typedef void ft_list_push_front_t(list_t **list, void *data);
 
 ft_list_push_front_t ft_list_push_front, ft_list_push_front_c;
 
-void ft_list_push_front_c(list_t **list, list_t *new) {
+void ft_list_push_front_c(list_t **list, void *data) {
+  list_t *new = malloc(sizeof(list_t));
+  if (new == 0) {
+    *list = 0;
+    return;
+  }
+  new->data = data;
   new->next = *list;
   *list = new;
 }
