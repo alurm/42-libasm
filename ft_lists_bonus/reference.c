@@ -1,9 +1,17 @@
-#include "../list.h"
+#include "list.h"
 #include <stdlib.h>
 #include <stdbool.h>
 #include <stdint.h>
 
 typedef void ft_list_push_front_t(list_t **list, void *data);
+typedef int ft_list_size_t(list_t *list);
+typedef void ft_list_sort_t(list_t **list, int (*cmp)(void *a, void *b));
+typedef void ft_list_remove_if_t(
+  list_t **list,
+  void *data,
+  int (*cmp)(void *a, void *b),
+  void (*free)(void *)
+);
 
 ft_list_push_front_t ft_list_push_front, ft_list_push_front_c;
 
@@ -18,8 +26,6 @@ void ft_list_push_front_c(list_t **list, void *data) {
   *list = new;
 }
 
-typedef int ft_list_size_t(list_t *list);
-
 ft_list_size_t ft_list_size, ft_list_size_c;
 
 int ft_list_size_c(list_t *list) {
@@ -32,8 +38,6 @@ int ft_list_size_c(list_t *list) {
   );
   return size;
 }
-
-typedef void ft_list_sort_t(list_t **list, int (*cmp)(void *a, void *b));
 
 ft_list_sort_t ft_list_sort, ft_list_sort_c;
 
@@ -82,13 +86,6 @@ bool is_sorted(list_t *list, int (*cmp)(void *a, void *b)) {
 int compare_intptrs(void *a, void *b) {
   return (intptr_t)a - (intptr_t)b;
 }
-
-typedef void ft_list_remove_if_t(
-  list_t **list,
-  void *data,
-  int (*cmp)(void *a, void *b),
-  void (*free)(void *)
-);
 
 ft_list_remove_if_t ft_list_remove_if, ft_list_remove_if_c;
 

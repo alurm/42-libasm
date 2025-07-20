@@ -8,6 +8,19 @@
 - `strlen`
 - `atoi_base` (an `atoi` which takes a base in range from 2 to 16)
 
+C implementations for all of the functions (including the ones listed below) are included as well.
+
+# Also, some functions for working with linked lists are provided at ft_lists_bonus
+
+- `list_push_front`
+- `list_size`
+- `list_sort`
+- `list_remove_if`
+
+# Testing, building
+
+Either run `make test` (provided that all dependencies have been installed) or run `nix build`.
+
 # Some useful docs
 
 - [The subject for this task at the moment of writing](en.subject.pdf)
@@ -17,7 +30,3 @@
 - The [table](https://man7.org/linux/man-pages/man2/syscall.2.html#:~:text=to%20pass%20the%20system%20call%20arguments) with system call arguments
 - System call [numbers](https://chromium.googlesource.com/chromiumos/docs/+/master/constants/syscalls.md)
 - [Two's complement (Wikipedia)](https://en.wikipedia.org/wiki/Two%27s_complement)
-
-# Testing
-
-Either run `make test` (provided that all dependencies have been installed) or run `nix build`.
