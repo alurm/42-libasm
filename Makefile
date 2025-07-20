@@ -2,7 +2,7 @@
 NAME := libasm.a
 
 %.o: %.nasm
-	nasm -f elf64 $<
+	nasm -g -f elf64 $<
 
 mandatory := $(addprefix ft_, \
 	strlen \

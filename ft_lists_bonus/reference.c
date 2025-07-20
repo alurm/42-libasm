@@ -94,8 +94,6 @@ ft_list_remove_if_t ft_list_remove_if, ft_list_remove_if_c;
 
 // It's not obvious if free() should be used or not.
 // Let's say that it should.
-// TODO: add more introspection.
-// TODO: add an asm implementation.
 void ft_list_remove_if_c(
   list_t **list,
   void *data,
@@ -124,3 +122,7 @@ int compare_always_less(void *a, void *b) {
 }
 
 void delete_do_nothing(void *a) {}
+
+int compare_zero_if_odd(void *a, void *b) {
+  return (intptr_t)a % 2 == 0;
+}

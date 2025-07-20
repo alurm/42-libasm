@@ -161,3 +161,74 @@ ft_list_sort:
         pop r13
         pop r12
         ret
+
+extern free
+
+global ft_list_remove_if
+
+ft_list_remove_if:
+        ; rdi: list: list_t **
+        ; rsi: data: void *
+        ; rdx: cmp: int(*)(void *, void *)
+        ; rcx: delete: void(*)(void *)
+
+        push r12
+        push r13
+        push r14
+        push r15
+        push rbx
+
+        ; current: list_t **
+        mov r12, rdi
+        ; data: void *
+        mov r13, rsi
+        ; cmp: int(*)(void *, void *)
+        mov r14, rdx
+        ; delete: void(*)(void *)
+        mov r15, rcx
+
+.loop:
+        ; if (*current == 0) goto end;
+        mov rax, [r12]
+        cmp rax, 0
+        je .end
+
+        ; if (cmp((...)->data, data) != 0) goto advance;
+        mov rdi, [rax]
+        mov rsi, r13
+        call r14
+        cmp rax, 0
+        jne .advance
+
+        ; next: list_t *
+        mov rbx, [r12]
+        mov rbx, [rbx + 8]
+
+        ; delete((*current)->data);
+        mov rdi, [r12]
+        mov rdi, [rdi]
+        call r15
+
+        ; free(*current);
+        mov rdi, [r12]
+        call free
+
+        ; *current = next;
+        mov [r12], rbx
+
+        jmp .loop
+
+.advance:
+        ; current = &(*current)->next;
+        mov r12, [r12]
+        add r12, 8
+
+        jmp .loop
+
+.end:
+        pop rbx
+        pop r15
+        pop r14
+        pop r13
+        pop r12
+        ret

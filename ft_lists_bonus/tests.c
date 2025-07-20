@@ -30,6 +30,7 @@ int test_sort() {
     for (size_t i = 0; i < size(tests); i++) {
       __auto_type sort_list = fn ? ft_list_sort : ft_list_sort_c;
       __auto_type test = tests[i];
+      __auto_type remove_if = fn ? ft_list_remove_if : ft_list_remove_if_c;
 
       list_t *head = 0;
     
@@ -42,11 +43,44 @@ int test_sort() {
 
       for (list_t *list = head; list != 0; list = list->next)
       printf("%p\n", list->data);
-      printf("\n");
 
-      ft_list_remove_if_c(&head, 0, compare_always_equal, delete_do_nothing);
+      // Check that the data is passed correctly.
+      {
+        size_t ones = 0;
+        for (list_t *list = head; list != 0; list = list->next)
+        if ((intptr_t)list->data == 1) ones++;
+
+        remove_if(&head, (void *)1, compare_intptrs, delete_do_nothing);
+
+        for (list_t *list = head; list != 0; list = list->next)
+        assert((intptr_t)list->data != 1);
+
+        assert(ft_list_size(head) == test.size - ones);
+        test.size -= ones;
+      }
+
+      // Test removing only odd numbers.
+      {
+        size_t odd_numbers = 0;
+        for (list_t *list = head; list != 0; list = list->next)
+        if ((intptr_t)list->data % 2 == 1) odd_numbers++;
+        // printf("Odd numbers: %zu.\n", odd_numbers);
+
+        remove_if(&head, 0, compare_zero_if_odd, delete_do_nothing);
+
+        // Check that all odd numberss have been deleted.
+        for (list_t *list = head; list != 0; list = list->next)
+        assert((intptr_t)list->data % 2 == 0);
+        assert(ft_list_size(head) == test.size - odd_numbers);
+        test.size -= odd_numbers;
+      }
+
+      remove_if(&head, 0, compare_always_equal, delete_do_nothing);
+      assert(ft_list_size(head) == 0);
 
       if (!is_sorted(head, compare_intptrs)) return 1;
+
+      printf("\n");
     }
   }
  

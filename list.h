@@ -3,5 +3,5 @@ typedef struct s_list {
   struct s_list *next;
 } t_list;
 
-// Sorry, not sorry.
+// I prefer this way.
 typedef t_list list_t;
