@@ -1,6 +1,6 @@
 #include <stddef.h>
 
-#include "../mandatory.h"
+#include "../libasm.h"
 
 typedef size_t function_t(const char *string);
 

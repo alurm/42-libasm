@@ -1,6 +1,8 @@
 #include <sys/types.h>
 #include <assert.h>
 
+#include "../libasm_bonus.h"
+
 typedef int function_t(const char *string, int base);
 
 function_t reference, ft_atoi_base;

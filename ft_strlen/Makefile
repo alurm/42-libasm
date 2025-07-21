@@ -1,1 +1,1 @@
-../mandatory.mk
+../test.mk

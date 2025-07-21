@@ -18,18 +18,18 @@ bonuses := $(addsuffix _bonus, $(addprefix ft_, \
 	lists \
 ))
 
-mandatory.a: $(addsuffix /the.o, $(mandatory))
+libasm_mandatory.a: $(addsuffix /the.o, $(mandatory))
 	ar r $@ $^
 
-bonus.a: $(addsuffix /the.o, $(mandatory) $(bonuses))
+libasm_bonus.a: $(addsuffix /the.o, $(mandatory) $(bonuses))
 	ar r $@ $^
 
 .PHONY: all clean fclean re test bonus libasm.a
 
-$(NAME) all: mandatory.a
+$(NAME) all: libasm_mandatory.a
 	ln -fs $^ $(NAME)
 
-bonus: bonus.a
+bonus: libasm_bonus.a
 	ln -fs $^ $(NAME)
 
 clean:

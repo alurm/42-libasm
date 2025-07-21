@@ -1,1 +1,1 @@
-../bonus.mk
+../test_bonus.mk

@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../mandatory.h"
+#include "../libasm.h"
 
 typedef char *function_t(const char *s);
 
