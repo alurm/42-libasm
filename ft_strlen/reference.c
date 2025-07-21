@@ -1,5 +1,7 @@
 #include <stddef.h>
 
+#include "../mandatory.h"
+
 typedef size_t function_t(const char *string);
 
 function_t reference, ft_strlen;

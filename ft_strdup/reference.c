@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "../mandatory.h"
+
 typedef char *function_t(const char *s);
 
 function_t reference, ft_strdup;

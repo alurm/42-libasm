@@ -3,6 +3,8 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "../bonus.h"
+
 typedef void ft_list_push_front_t(list_t **list, void *data);
 typedef int ft_list_size_t(list_t *list);
 typedef void ft_list_sort_t(list_t **list, int (*cmp)(void *a, void *b));

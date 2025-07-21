@@ -1,5 +1,7 @@
 #include <stddef.h>
 
+#include "../mandatory.h"
+
 typedef char *function_t(char *destination, const char *source);
 
 function_t reference, ft_strcpy;

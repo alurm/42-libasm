@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := all
 NAME := libasm.a
 
-%.o: %.nasm
+%.o: %.s
 	nasm -g -f elf64 $<
 
 mandatory := $(addprefix ft_, \

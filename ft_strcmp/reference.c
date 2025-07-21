@@ -1,5 +1,7 @@
 #include <stddef.h>
 
+#include "../mandatory.h"
+
 typedef int function_t(const char *s1, const char *s2);
 
 function_t reference, ft_strcmp;
