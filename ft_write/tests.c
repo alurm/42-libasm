@@ -6,7 +6,9 @@
 #include <signal.h>
 
 enum {
-  pipe_test
+  pipe_test,
+  closed_pipe_test,
+  named_tests_end,
 };
 
 struct test {
@@ -16,7 +18,9 @@ struct test {
   ssize_t result;
   int the_errno;
 } tests[] = {
-  [pipe_test] = { -1, "Hello", 5, -1, EPIPE },
+  [pipe_test] = { -1, "Hello", 5, 5 },
+  [closed_pipe_test] = { -1, "Hello", 5, -1, EPIPE },
+  [named_tests_end] =
   { 1, "Hello\n", 6, 6 },
   { 1, "", 0, 0 },
   { 128, "", 0, -1, EBADF },
@@ -26,9 +30,9 @@ struct test {
 int main() {
   int the_pipe[2];
   assert(pipe(the_pipe) != -1);
-  assert(close(the_pipe[0]) != -1);
   assert(signal(SIGPIPE, SIG_IGN) != SIG_ERR);
   tests[pipe_test].fd = the_pipe[1];
+  tests[closed_pipe_test].fd = the_pipe[1];
 
   for (size_t i = 0; i < sizeof(tests) / sizeof(*tests); i++) {
     struct test t = tests[i];
@@ -46,6 +50,8 @@ int main() {
       return 1;
     }
     if (result == -1) perror("Write: errno");
+
+    if (i == pipe_test) assert(close(the_pipe[0]) != -1);
   }
   printf("All tests have passed.\n");
 }

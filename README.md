@@ -30,3 +30,8 @@ Either run `make test` (provided that all dependencies have been installed) or r
 - The [table](https://man7.org/linux/man-pages/man2/syscall.2.html#:~:text=to%20pass%20the%20system%20call%20arguments) with system call arguments
 - System call [numbers](https://chromium.googlesource.com/chromiumos/docs/+/master/constants/syscalls.md)
 - [Two's complement (Wikipedia)](https://en.wikipedia.org/wiki/Two%27s_complement)
+
+# To-do, things to consider
+
+- Test coverage can be added
+- -W{all,error,extra} can be added

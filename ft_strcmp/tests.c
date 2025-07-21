@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 struct test {
   char *s1;
@@ -11,6 +12,7 @@ struct test {
   { "a", "b" },
   { "b", "a" },
   { "", "diff" },
+  { "diff", "" },
   { "adiff", "a" },
   { "\xf0", "\xf1" },
   { (char[]){ 254, 0 }, (char[]){ 253, 0 } },
