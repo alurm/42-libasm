@@ -69,6 +69,7 @@ ft_list_sort:
         push r13
         push r14
         push r15
+        sub rsp, 8
         
         ; r12: list: list_t **;
         mov r12, rdi
@@ -156,6 +157,7 @@ ft_list_sort:
         jmp .inner
         
 .done:
+        add rsp, 8
         pop r15
         pop r14
         pop r13
@@ -177,6 +179,7 @@ ft_list_remove_if:
         push r14
         push r15
         push rbx
+        sub rsp, 8
 
         ; current: list_t **
         mov r12, rdi
@@ -226,6 +229,7 @@ ft_list_remove_if:
         jmp .loop
 
 .end:
+        add rsp, 8
         pop rbx
         pop r15
         pop r14
